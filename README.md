@@ -49,21 +49,60 @@ If the control input changes to AB = 10, then all the gates are restricted excep
 ### Procedure
 /* write all the steps invloved */
 
+Step1:- Open Quartus II Software.
 
+Step2:- Create a new project such that the name of the project is used for name of the module.
+
+Step3:- Develop the program for both Multiplexer and De-Multiplexer.
+
+Step4:- Run the RTL Simulation.
+
+Step5:- Simulate the timing Diagram.
+
+Step6:- Validate the outputs.
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: RAGUNATH R
+RegisterNumber: 22008922 
 */
 
+## Multiplexer
+module mul(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire P,Q,R,S,S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (P,S0c,S1c,I0);
+and(Q,S0c,S1,I1);
+and(R,S0,S1c,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
 
+## De-Multiplexer
+
+module demul(Y0,Y1,Y2,Y3,S0,S1,I);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (Y0,I,S0c,S1c);
+and(Y1,I,S0c,S1);
+and(Y2,I,S0,S1c);
+and(Y3,I,S0,S1);
+endmodule
 
 
 
 
 ### RTL LOGIC  
+![WhatsApp Image 2023-01-26 at 08 41 54](https://user-images.githubusercontent.com/113915622/214751187-17e44a52-c0b7-4264-bd9a-efd865ff8ebd.jpg)
+![WhatsApp Image 2023-01-26 at 08 42 38](https://user-images.githubusercontent.com/113915622/214751213-303128f4-ad6f-4d1d-8a60-f79e81c101eb.jpg)
+
 
 
 
@@ -73,12 +112,17 @@ RegisterNumber:
 
 
 ### TIMING DIGRAMS  
+![WhatsApp Image 2023-01-26 at 08 43 16](https://user-images.githubusercontent.com/113915622/214751297-d3063d2e-8631-4cbb-ad98-6b64a24538ca.jpg)
+![WhatsApp Image 2023-01-26 at 08 43 44](https://user-images.githubusercontent.com/113915622/214751327-37b23936-7497-4471-a0f5-0062e901bd72.jpg)
+
 
 
 
 
 
 ### TRUTH TABLE 
+![WhatsApp Image 2023-01-26 at 08 44 05](https://user-images.githubusercontent.com/113915622/214751343-d3b19c63-347b-4a59-a079-b57a7f653ed4.jpg)
+![WhatsApp Image 2023-01-26 at 08 44 26](https://user-images.githubusercontent.com/113915622/214751366-e3b2c483-51ba-4958-a65d-7491fb9f9c52.jpg)
 
 
 
@@ -86,3 +130,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+Therefore 4X1 multiplexer and 1X4 de multiplexer are successfully implemented using verilog and validate its outputs
